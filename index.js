@@ -1,4 +1,5 @@
 // 入口文件
+const jsonLoader = require('./jsonLoader.js')
 
 const fs = require("fs");
 const path = require("path");
@@ -9,11 +10,31 @@ const { transformFromAst } = require("babel-core");
 
 let id = 0
 
+  const webpackConfig = {
+    module: {
+      rules: [
+        {
+          test: /\.json$/,
+          use: jsonLoader,
+        },
+      ],
+    }
+  }
+
 function createAsset(filePath) {
   // 1. 获取文件内容
-  const source = fs.readFileSync(filePath, {
+  let source = fs.readFileSync(filePath, {
     encoding: "utf-8",
   });
+
+  // 解析不同文件
+  const loaders = webpackConfig.module.rules;
+  loaders.forEach(({test, use}) => {
+    if (test.test(filePath)) {
+      source = use(source)
+    }
+  })
+
 
   // 2. ast - 抽象语法树
   const ast = parser.parse(source, {
