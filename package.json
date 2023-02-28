@@ -1,0 +1,33 @@
+{
+  "name": "mini-webpack",
+  "version": "1.0.0",
+  "description": "1. 内容",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pgl-g/mini-webpack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pgl-g/mini-webpack/issues"
+  },
+  "homepage": "https://github.com/pgl-g/mini-webpack#readme",
+  "keywords": [],
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "@babel/parser": "^7.21.2",
+    "@babel/traverse": "^7.21.2",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "ejs": "^3.1.8"
+  }
+}
